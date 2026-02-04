@@ -139,7 +139,17 @@ I stedet for å skrive rå API-kall mot OpenAI, gir LangChain deg byggeblokker: 
 
 <div class="mt-4 p-4 bg-blue-500 bg-opacity-10 rounded">
 
-**LangGraph** er et søsterbibliotek som lar deg bygge _agenter_ — LLM-applikasjoner som kan ta flere steg, bruke verktøy, og ta avgjørelser underveis.
+**LangGraph** er et søsterbibliotek som lar deg bygge _agenter_.
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4 text-xl text-center opacity-75">
+
+_Men hva er egentlig en agent?_
 
 </div>
 
