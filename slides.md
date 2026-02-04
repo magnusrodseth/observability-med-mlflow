@@ -20,10 +20,9 @@ Magnus Rødseth og Håvard Opheim
 
 Capra Consulting @ Gjensidige
 
-<div class="abs-bl m-6 flex gap-4 items-center">
-  <div class="border-2 border-dashed border-yellow-400 rounded px-4 py-2 text-yellow-400 text-xs">
-    📸 PLACEHOLDER: Gjensidige logo — place as <code>/public/gjensidige-logo.png</code>
-  </div>
+<div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
+  <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
+  <img src="/gjensidige-logo.png" class="h-6" alt="Gjensidige" />
 </div>
 
 <!--
@@ -65,10 +64,9 @@ Vi viser hvordan vi bruker **MLflow** og **LangChain** for å observere og guide
 
 </v-click>
 
-<div class="abs-bl m-4 flex gap-2">
-  <div class="border-2 border-dashed border-yellow-400 rounded px-3 py-1 text-yellow-400 text-xs">
-    📸 PLACEHOLDER: Capra Consulting logo — place as <code>/public/capra-logo.png</code>
-  </div>
+<div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
+  <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
+  <img src="/gjensidige-logo.png" class="h-6" alt="Gjensidige" />
 </div>
 
 <!--
@@ -420,10 +418,10 @@ Du har nettopp kjøpt en bolig:
 
 <div class="flex items-center justify-center">
   <div class="border-2 border-dashed border-yellow-400 rounded-lg p-6 text-yellow-400 text-center w-full h-56 flex flex-col items-center justify-center">
-    <div class="text-4xl mb-4">🏠</div>
-    <div class="text-sm font-bold">📸 PLACEHOLDER</div>
-    <div class="text-xs mt-2">Hei, huset! logo or app icon</div>
-    <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/hei-huset-logo.png</code></div>
+    <div class="text-3xl mb-2">💬🏠</div>
+    <div class="text-sm font-bold">📸 PLACEHOLDER: App-screenshot</div>
+    <div class="text-xs mt-2">Screenshot av Hei, huset!-appen (chat eller dashboard)</div>
+    <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/hei-huset-app.png</code></div>
   </div>
 </div>
 
@@ -1408,13 +1406,9 @@ Capra Consulting @ Gjensidige
 
 </div>
 
-<div class="abs-bl m-6 flex gap-4">
-  <div class="border-2 border-dashed border-yellow-400 rounded px-3 py-1 text-yellow-400 text-xs">
-    📸 PLACEHOLDER: Capra logo → <code>/public/capra-logo.png</code>
-  </div>
-  <div class="border-2 border-dashed border-yellow-400 rounded px-3 py-1 text-yellow-400 text-xs">
-    📸 PLACEHOLDER: Gjensidige logo → <code>/public/gjensidige-logo.png</code>
-  </div>
+<div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
+  <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
+  <img src="/gjensidige-logo.png" class="h-6" alt="Gjensidige" />
 </div>
 
 <!--
