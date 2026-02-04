@@ -1,0 +1,23 @@
+.slidev-code-wrapper {
+  font-size: 0.58em !important;
+  line-height: 1.35 !important;
+}
+
+pre.slidev-code {
+  font-size: 0.9em !important;
+  line-height: 1.35 !important;
+}
+
+/* Make slides containing mermaid diagrams use flex column layout
+   so the diagram can grow and center vertically */
+.slidev-layout:has(.mermaid) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.mermaid {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex: 1 !important;
+}
