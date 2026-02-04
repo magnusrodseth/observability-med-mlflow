@@ -6,3 +6,5 @@ dist
 .remote-assets
 components.d.ts
 slide-*.png
+bun.lock
+netlify.toml
