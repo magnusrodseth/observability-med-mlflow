@@ -32,25 +32,50 @@ Presentasjonen varer 20 minutter.
 -->
 
 ---
-layout: two-cols
----
 
 # Hvem er vi?
 
-<v-clicks>
+<div class="flex gap-16 items-center justify-center mt-12">
 
-- **Magnus Rødseth** og **Håvard Opheim**
-- Utviklere i Capra Consulting
-- Jobber hos Gjensidige — Norges største forsikringsselskap
-- Bygger AI-drevne løsninger for boligeiere
+<div class="flex flex-col items-center gap-4">
+  <img src="/magnus.jpg" class="w-36 h-36 rounded-full object-cover border-4 border-gray-200 shadow-lg" alt="Magnus Rødseth" />
+  <div class="text-center">
+    <div class="font-bold text-lg">Magnus Rødseth</div>
+    <div class="text-sm opacity-75">Utvikler i Capra Consulting</div>
+  </div>
+</div>
 
-</v-clicks>
+<div class="flex flex-col items-center gap-4">
+  <img src="/havard.jpg" class="w-36 h-36 rounded-full object-cover border-4 border-gray-200 shadow-lg" alt="Håvard Opheim" />
+  <div class="text-center">
+    <div class="font-bold text-lg">Håvard Opheim</div>
+    <div class="text-sm opacity-75">Utvikler i Capra Consulting</div>
+  </div>
+</div>
 
-::right::
+</div>
 
-<v-click>
+<div class="mt-12 text-center text-lg">
 
-## Dagens tema
+Jobber hos **Gjensidige** — Norges største forsikringsselskap
+
+Bygger AI-drevne løsninger for boligeiere
+
+</div>
+
+<div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
+  <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
+  <img src="/gjensidige-logo.png" class="h-6" alt="Gjensidige" />
+</div>
+
+<!--
+Hei alle sammen. Vi heter Magnus Rødseth og Håvard Opheim, og vi er utviklere i Capra Consulting.
+Vi jobber for tiden på et nytt prosjekt hos Gjensidige — Norges største forsikringsselskap.
+-->
+
+---
+
+# Dagens tema
 
 **Forutsigbar agentisk oppførsel med LangChain og MLflow**
 
@@ -62,17 +87,12 @@ Vi viser hvordan vi bruker **MLflow** og **LangChain** for å observere og guide
 
 </div>
 
-</v-click>
-
 <div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
   <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
   <img src="/gjensidige-logo.png" class="h-6" alt="Gjensidige" />
 </div>
 
 <!--
-Hei alle sammen. Vi heter Magnus Rødseth og Håvard Opheim, og vi er utviklere i Capra Consulting.
-Vi jobber for tiden på et nytt prosjekt hos Gjensidige — Norges største forsikringsselskap.
-
 Temaet for denne presentasjonen er: Forutsigbar agentisk oppførsel med LangChain og MLflow.
 Agentiske applikasjoner og store språkmodeller kan ofte oppleves som uforutsigbare og vanskelig å forholde seg til som utviklere.
 Vi skal vise dere hvordan vi bruker MLflow og LangChain hos Gjensidige for å observere og guide adferden i agentiske applikasjoner.
