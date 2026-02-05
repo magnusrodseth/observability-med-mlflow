@@ -12,13 +12,16 @@ drawings:
 transition: slide-left
 title: Forutsigbar agentisk oppførsel med LangChain og MLflow
 mdc: true
+background: /banner.jpeg
 ---
 
 # Forutsigbar agentisk oppførsel med LangChain og MLflow
 
-Magnus Rødseth og Håvard Opheim
+<div class="text-xl font-semibold text-white drop-shadow-lg">Magnus Rødseth og Håvard Opheim</div>
 
-Capra Consulting @ Gjensidige
+<div class="text-lg text-white/90 drop-shadow-md">Capra Consulting @ Gjensidige</div>
+
+<div class="absolute inset-0 bg-black/75 -z-1"></div>
 
 <div class="abs-br m-6 flex gap-8 items-center bg-white rounded-lg px-4 py-2">
   <img src="/capra-logo.png" class="h-5" alt="Capra Consulting" />
