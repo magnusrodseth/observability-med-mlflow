@@ -59,7 +59,7 @@ Presentasjonen varer 20 minutter.
 
 Jobber hos **Gjensidige** — Norges største forsikringsselskap
 
-Bygger AI-drevne løsninger for boligeiere
+Bygger agentiske AI-applikasjoner
 
 </div>
 
@@ -306,7 +306,7 @@ model = AzureChatOpenAI(model="gpt-4.1")
 # 2. Lag en prompt
 from langchain_core.prompts import ChatPromptTemplate
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "Du er en boligrådgiver."),
+    ("system", "Du er en hjelpsom assistent."),
     ("human", "{question}"),
 ])
 ```
@@ -319,13 +319,13 @@ model = AzureChatOpenAI(model="gpt-4.1")
 # 2. Lag en prompt
 from langchain_core.prompts import ChatPromptTemplate
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "Du er en boligrådgiver."),
+    ("system", "Du er en hjelpsom assistent."),
     ("human", "{question}"),
 ])
 
 # 3. Koble sammen og kjør
 chain = prompt | model
-response = chain.invoke({"question": "Hva betyr TG2?"})
+response = chain.invoke({"question": "Hva er hovedpunktene?"})
 ```
 ````
 
@@ -423,7 +423,7 @@ Nå som dere har en grunnleggende forståelse av LangChain og agenter, la oss se
 
 ---
 
-# Hei, huset! — Snakk med boligen din
+# Caset: En agentisk dokumentassistent
 
 <div class="grid grid-cols-2 gap-8">
 
@@ -431,16 +431,16 @@ Nå som dere har en grunnleggende forståelse av LangChain og agenter, la oss se
 
 <v-clicks>
 
-**Hei, huset!** — en AI-assistent som lar norske boligeiere "snakke med huset sitt".
+Tenk deg at du bygger en chatbot der brukere kan:
 
-Du har nettopp kjøpt en bolig:
-- Tilstandsrapport på 40 sider
-- Salgsoppgave
-- FDV-dokumentasjon
+- Laste opp komplekse dokumenter (rapporter, kontrakter, manualer)
+- Stille spørsmål og få svar basert på innholdet
+- Få AI-genererte oppsummeringer og anbefalinger
 
-**Løsningen:** Last opp dokumentene, og spør:
-- "Hva er tilstanden på taket mitt?"
-- "Hva bør jeg prioritere å fikse først?"
+**Utfordringen:**
+- Hvordan vet du at agenten fungerer?
+- At den ikke hallusinerer?
+- At RAG henter riktig kontekst?
 
 </v-clicks>
 
@@ -448,141 +448,23 @@ Du har nettopp kjøpt en bolig:
 
 <div class="flex items-center justify-center">
   <div class="border-2 border-dashed border-yellow-400 rounded-lg p-6 text-yellow-400 text-center w-full h-56 flex flex-col items-center justify-center">
-    <div class="text-3xl mb-2">💬🏠</div>
+    <div class="text-3xl mb-2">💬📄</div>
     <div class="text-sm font-bold">📸 PLACEHOLDER: App-screenshot</div>
-    <div class="text-xs mt-2">Screenshot av Hei, huset!-appen (chat eller dashboard)</div>
-    <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/hei-huset-app.png</code></div>
+    <div class="text-xs mt-2">Screenshot av chat-grensesnitt med dokumenter</div>
+    <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/document-chat-app.png</code></div>
   </div>
 </div>
 
 </div>
 
 <!--
-Vi bygger Hei, huset! — en AI-assistent som lar norske boligeiere "snakke med huset sitt".
+La oss ta et konkret case: En agentisk dokumentassistent.
 
-Tenk deg at du nettopp har kjøpt en bolig. Du har en tilstandsrapport på 40 sider, en salgsoppgave, kanskje FDV-dokumentasjon.
-Alt dette er viktig informasjon om boligen din, men hvem leser egentlig 40 sider med fagspråk om tilstandsgrader og avvik?
+Tenk deg at du bygger en chatbot der brukere kan laste opp komplekse dokumenter — rapporter, kontrakter, manualer — og så stille spørsmål og få svar basert på innholdet.
 
-Det er her Hei, huset! kommer inn. Du laster opp dokumentene dine, og så kan du bare spørre:
-"Hva er tilstanden på taket mitt?" eller "Hva bør jeg prioritere å fikse først?"
--->
+Utfordringen er: Hvordan vet du at agenten fungerer? At den ikke hallusinerer? At RAG henter riktig kontekst?
 
----
-
-# Hva kan applikasjonen gjøre?
-
-## 1. Chat med kontekst
-
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-6 text-yellow-400 text-center mt-4 h-48 flex flex-col items-center justify-center">
-  <div class="text-3xl mb-2">💬</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: Screenshot av chat-grensesnittet</div>
-  <div class="text-xs mt-2">En samtale der brukeren spør om taket sitt og får et personalisert svar med kildehenvisninger</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/chat-interface.png</code></div>
-</div>
-
-<v-clicks>
-
-- Chatte med AI-en og stille spørsmål om boligen din
-- AI-en bruker informasjon fra dokumentene dine og tilstandsvurderinger
-- Du kan "tagge" kontekst — for eksempel en spesifikk tilstandsvurdering eller et varsel
-- Personaliserte svar med kildehenvisninger
-
-</v-clicks>
-
-<!--
-La meg ta dere gjennom de viktigste funksjonene.
-
-Først: Chat med kontekst.
-Du kan chatte med AI-en og stille spørsmål om boligen din.
-AI-en bruker informasjon fra dokumentene dine og tilstandsvurderinger for å gi personaliserte svar.
-Du kan "tagge" kontekst — for eksempel en spesifikk tilstandsvurdering eller et varsel — og AI-en tar hensyn til det i svaret.
--->
-
----
-
-# 2. Dokumentanalyse med AI
-
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-6 text-yellow-400 text-center mt-4 h-40 flex flex-col items-center justify-center">
-  <div class="text-3xl mb-2">📊</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: Screenshot av property-siden</div>
-  <div class="text-xs mt-2">Tilstandsvurderinger med TG-kort, fargekoder, ELI5-forklaringer, konfidensindikatorer</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/property-conditions.png</code></div>
-</div>
-
-Når du laster opp en tilstandsrapport, kjører vi en ekstraheringsagent som:
-
-<v-clicks>
-
-- 📄 Leser og tolker hver side med vision-modell (PDF → Markdown)
-- 🔍 Finner alle tilstandsvurderinger (TG0–TG3) med kategori, beskrivelse og anbefaling
-- 📊 Vurderer påliteligheten på hvert funn — høy, middels eller lav
-- 💡 Skriver en "explain like I'm 5"-forklaring for hvert punkt, uten faguttrykk
-- ⭐ Prioriterer de 3–5 viktigste punktene du bør ta tak i
-
-</v-clicks>
-
-<!--
-Funksjon nummer to: Dokumentanalyse med AI.
-
-Når du laster opp en tilstandsrapport, kjører vi en ekstraheringsagent som:
-- Leser og tolker hver side med vision-modell — PDF til Markdown
-- Finner alle tilstandsvurderinger (TG0 til TG3) med kategori, beskrivelse og anbefaling
-- Vurderer påliteligheten på hvert funn — høy, middels eller lav
-- Skriver en "explain like I'm 5"-forklaring for hvert punkt, uten faguttrykk
-- Prioriterer de 3 til 5 viktigste punktene du bør ta tak i
--->
-
----
-layout: two-cols
----
-
-# 3. Varsler
-
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-4 text-yellow-400 text-center mt-4 h-32 flex flex-col items-center justify-center">
-  <div class="text-2xl mb-1">⚠️</div>
-  <div class="text-xs font-bold">📸 PLACEHOLDER: Varsler-siden</div>
-  <div class="text-xs mt-1">Frostvarsel med personaliserte tiltak</div>
-  <div class="text-xs opacity-75">→ <code>/public/screenshots/warnings.png</code></div>
-</div>
-
-<v-click>
-
-Gjensidige sender varsler til boligeiere:
-- Frost
-- Kraftig nedbør
-- Stormvarsel
-
-Brukeren kan klikke på et varsel og få **personaliserte tiltak** for sin bolig.
-
-</v-click>
-
-::right::
-
-# 4. Forbedringsplaner
-
-<v-click>
-
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-4 text-yellow-400 text-center mt-4 h-32 flex flex-col items-center justify-center">
-  <div class="text-2xl mb-1">📋</div>
-  <div class="text-xs font-bold">📸 PLACEHOLDER: Forbedringsplan</div>
-  <div class="text-xs mt-1">Utbedringsplan med prioritering</div>
-  <div class="text-xs opacity-75">→ <code>/public/screenshots/improvement-plan.png</code></div>
-</div>
-
-AI-en lager utbedringsplaner:
-- For enkeltpunkter
-- Samlet plan med prioritert rekkefølge
-- Estimert kostnad og tidsbruk
-
-</v-click>
-
-<!--
-Funksjon tre: Varsler.
-Gjensidige sender varsler til boligeiere — frost, kraftig nedbør, stormvarsel.
-Brukeren kan klikke på et varsel og få personaliserte tiltak for sin bolig.
-
-Funksjon fire: Forbedringsplaner.
-AI-en lager utbedringsplaner for enkeltpunkter eller en samlet plan med prioritert rekkefølge.
+Dette er nøyaktig problemstillingen vi skal vise dere hvordan vi løser med MLflow.
 -->
 
 ---
@@ -615,7 +497,7 @@ graph LR
 
 **Tech-stacken:**
 - Python, LangGraph + LangChain for agentorkestrering
-- Azure OpenAI (via Gjensidiges interne endpoint)
+- Azure OpenAI
 - PostgreSQL med pgvector for data og RAG
 - **MLflow for observabilitet** ← Dette er fokuset i dag
 
@@ -624,9 +506,9 @@ graph LR
 <!--
 Her er den tekniske arkitekturen på høyt nivå.
 
-Vi har en React Router frontend med Gjensidige Builders design system.
+Vi har en React Router frontend.
 FastAPI backend med guardrails for validering, RAG med pgvector, og conversation memory i PostgreSQL.
-Infrastrukturen består av PostgreSQL med pgvector, Azure OpenAI via Gjensidiges interne endpoint, og MLflow for observabilitet.
+Infrastrukturen består av PostgreSQL med pgvector, Azure OpenAI, og MLflow for observabilitet.
 
 Tech-stacken er: Python, LangGraph + LangChain for agentorkestrering, Azure OpenAI, PostgreSQL med pgvector, og — det vi skal fokusere på i dag — MLflow for observabilitet.
 -->
@@ -670,7 +552,7 @@ Det betyr at vi _må_ vite:
 <div class="border rounded p-4">
   <div class="text-3xl mb-2">📄</div>
   <div class="font-bold mb-2">Ekstraksjonskvalitet</div>
-  <div class="text-sm">Finner AI-en alle tilstandsvurderinger i dokumentene?</div>
+  <div class="text-sm">Finner AI-en alle relevante funn i dokumentene?</div>
 </div>
 
 </div>
@@ -692,7 +574,7 @@ Vi bygger en MLS — en "minimum lovable service" for pilotbrukerne våre. Det b
 
 1. Hvordan bruker folk AI-delene? Stiller de spørsmål vi ikke forventet? Treffer RAG-modulen riktig kontekst?
 2. Hvordan oppfører agentene seg? Klassifiserer de intensjon riktig? Hallusinerer de?
-3. Fungerer ekstraheringen? Finner AI-en alle tilstandsvurderinger i dokumentene?
+3. Fungerer ekstraheringen? Finner AI-en alle relevante funn i dokumentene?
 
 Personlig tenker jeg på observabilitet som en måte å introdusere litt determinisme i det udeterministiske — eller i det minste litt klarhet der ting ikke alltid er like tydelig.
 -->
@@ -849,7 +731,7 @@ Tilstanden som flyter mellom nodene er definert som en TypedDict:
 class AgentState(TypedDict, total=False):
     messages: Annotated[list[BaseMessage], add_messages]
     conversation_id: uuid.UUID | None
-    resolved_context: dict | None        # Eiendoms-/tilstandskontekst
+    resolved_context: dict | None        # Bruker-/dokumentkontekst
     retrieved_docs: list[Document]       # RAG-resultater
     sources: list[dict]                  # Kildemetadata for siteringer
     current_step: str                    # Observabilitet
@@ -894,7 +776,7 @@ from deepagents import create_deep_agent
 def create_extraction_agent(...) -> Runnable:
     model = get_extraction_model()
     tools = [...]           # verktøy for parsing, lagring, fremdrift
-    subagent = [...]        # subagent for ekstraksjon av tilstandsvurderinger
+    subagent = [...]        # subagent for ekstraksjon av strukturerte funn
 
     return create_deep_agent(
         model=model,
@@ -930,13 +812,13 @@ Fordi Deep Agents bygger på LangChain, får vi automatisk tracing av hele orkes
 <div class="border-2 border-dashed border-yellow-400 rounded-lg p-8 text-yellow-400 text-center mt-8 h-80 flex flex-col items-center justify-center">
   <div class="text-4xl mb-4">🌳</div>
   <div class="text-sm font-bold">📸 PLACEHOLDER: MLflow UI — Ekstraheringsagent trace</div>
-  <div class="text-xs mt-2">Dypt span-tre med orkestrator-agenten øverst, condition-extractor-subagenten nøstet under,</div>
+  <div class="text-xs mt-2">Dypt span-tre med orkestrator-agenten øverst, extraction-subagenten nøstet under,</div>
   <div class="text-xs">og individuelle LLM-kall med tool calls synlige</div>
   <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/mlflow-extraction-trace.png</code></div>
 </div>
 
 <!--
-Her ser dere et ekstraheringsagent-trace i MLflow UI — det dype span-treet med orkestrator-agenten øverst, condition-extractor-subagenten nøstet under, og individuelle LLM-kall med tool calls synlige.
+Her ser dere et ekstraheringsagent-trace i MLflow UI — det dype span-treet med orkestrator-agenten øverst, extraction-subagenten nøstet under, og individuelle LLM-kall med tool calls synlige.
 
 I MLflow UI kan vi se:
 - Hovedagentens resonnering og verktøykall
@@ -1101,13 +983,13 @@ Vi har definert testtilfeller som dekker ulike scenarioer:
 ```python
 # api/src/evaluation/datasets/conversation.py
 
-PROPERTY_TEST_CASES = [
+DOCUMENT_TEST_CASES = [
     ConversationTestCase(
-        id="prop_001",
-        question="Hvor gammelt er taket mitt?",
-        expected_intent="PROPERTY_QUESTION",
-        context="Byggeår: 1985. Taket ble lagt om i 2010.",
-        reference_answer="Taket ble lagt om i 2010, ca. 15 år gammelt.",
+        id="doc_001",
+        question="Hva er hovedfunnene i rapporten?",
+        expected_intent="DOCUMENT_QUESTION",
+        context="Rapport fra 2024. Tre kritiske funn identifisert.",
+        reference_answer="Rapporten identifiserer tre kritiske funn.",
     ),
 ]
 
@@ -1133,7 +1015,7 @@ Disse testtilfellene kan kjøres som **regresjonstester** — etter hver endring
 <!--
 Vi har definert testtilfeller som dekker ulike scenarioer.
 
-Her er et eksempel på en PROPERTY_TEST_CASE — "Hvor gammelt er taket mitt?" med forventet intensjon og referansesvar.
+Her er et eksempel på en DOCUMENT_TEST_CASE — "Hva er hovedfunnene i rapporten?" med forventet intensjon og referansesvar.
 Og et eksempel på en OUT_OF_SCOPE_TEST_CASE — "Kan du hjelpe meg med matlagning?" som skal avvises.
 
 Disse testtilfellene kan kjøres som regresjonstester — etter hver endring i prompts eller agentkode kan vi verifisere at kvaliteten holder seg.
@@ -1250,17 +1132,16 @@ make db-up starter alt. http://localhost:5000 gir deg MLflow UI.
 
 ---
 
-# Produksjon — Databricks
+# Produksjon — Hosting-alternativer
 
-For produksjon vil vi hoste MLflow i **Databricks** innenfor Gjensidige sin skyrigg på Azure.
+For produksjon kan MLflow hostes på flere måter.
 
 <v-clicks>
 
 <div class="mt-8">
 
-**Hvorfor Databricks?**
+**Databricks (vårt valg)**
 - MLflow har native integrasjon med Databricks
-- Gjensidige bruker allerede Databricks for dataplattformen sin
 - Skalerer automatisk
 - Managed service — ingen infrastruktur å vedlikeholde
 
@@ -1279,17 +1160,15 @@ For produksjon vil vi hoste MLflow i **Databricks** innenfor Gjensidige sin skyr
 </v-clicks>
 
 <!--
-For produksjon vil vi hoste MLflow i Databricks innenfor Gjensidige sin skyrigg på Azure.
+For produksjon kan MLflow hostes på flere måter.
 
-Hvorfor Databricks?
+Databricks er vårt valg fordi:
 - MLflow har native integrasjon med Databricks
-- Gjensidige bruker allerede Databricks for dataplattformen sin
 - Skalerer automatisk
 - Managed service — ingen infrastruktur å vedlikeholde
 
 Fra MLflows egen dokumentasjon — alternativer for produksjonsskala:
 AWS SageMaker, Azure Machine Learning, Nebius, GCP.
-Vi bruker Databricks.
 -->
 
 ---
