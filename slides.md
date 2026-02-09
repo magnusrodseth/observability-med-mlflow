@@ -449,14 +449,7 @@ Tenk deg at du bygger en chatbot der brukere kan:
 
 </div>
 
-<div class="flex items-center justify-center">
-  <div class="border-2 border-dashed border-yellow-400 rounded-lg p-6 text-yellow-400 text-center w-full h-56 flex flex-col items-center justify-center">
-    <div class="text-3xl mb-2">💬📄</div>
-    <div class="text-sm font-bold">📸 PLACEHOLDER: App-screenshot</div>
-    <div class="text-xs mt-2">Screenshot av chat-grensesnitt med dokumenter</div>
-    <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/document-chat-app.png</code></div>
-  </div>
-</div>
+<img src="/screenshots/application.png" class="rounded-lg shadow-lg mt-4 mx-auto" alt="MLflow UI — Traces-oversikten" />
 
 </div>
 
@@ -482,14 +475,15 @@ graph LR
     
     subgraph Backend["FastAPI Backend"]
         B[Guardrails]
-        C[RAG / pgvector]
+        C[RAG]
         D[Conversation Memory]
+        E[Tools]
     end
     
     subgraph Infra["Infrastructure"]
-        E[PostgreSQL + pgvector]
-        F[Azure OpenAI]
-        G[MLflow]
+        F[PostgreSQL + pgvector]
+        G[Azure OpenAI]
+        H[MLflow]
     end
     
     A --> Backend
@@ -502,7 +496,7 @@ graph LR
 - Python, LangGraph + LangChain for agentorkestrering
 - Azure OpenAI
 - PostgreSQL med pgvector for data og RAG
-- **MLflow for observabilitet** ← Dette er fokuset i dag
+- **MLflow for observabilitet**
 
 </v-click>
 
@@ -532,9 +526,7 @@ Dette er kjernen av presentasjonen.
 
 # Hvorfor er observabilitet viktig?
 
-Vi bygger en **MLS** — en "minimum lovable service" for pilotbrukerne våre.
-
-Det betyr at vi _må_ vite:
+Vi _må_ vite:
 
 <v-clicks>
 
@@ -543,19 +535,19 @@ Det betyr at vi _må_ vite:
 <div class="border rounded p-4">
   <div class="text-3xl mb-2">👥</div>
   <div class="font-bold mb-2">Brukeratferd</div>
-  <div class="text-sm">Hvordan bruker folk AI-delene? Stiller de spørsmål vi ikke forventet?</div>
+  <div class="text-sm">Hvordan bruker brukere AI-delene? Hva lurer de faktisk på?</div>
 </div>
 
 <div class="border rounded p-4">
   <div class="text-3xl mb-2">🤖</div>
   <div class="font-bold mb-2">Agentoppførsel</div>
-  <div class="text-sm">Klassifiserer de intensjon riktig? Hallusinerer de?</div>
+  <div class="text-sm">Svarer den bra? Eller bare slop?</div>
 </div>
 
 <div class="border rounded p-4">
   <div class="text-3xl mb-2">📄</div>
   <div class="font-bold mb-2">Ekstraksjonskvalitet</div>
-  <div class="text-sm">Finner AI-en alle relevante funn i dokumentene?</div>
+  <div class="text-sm">Finner AI-en all relevant informasjon</div>
 </div>
 
 </div>
@@ -566,7 +558,7 @@ Det betyr at vi _må_ vite:
 
 <div class="mt-8 p-4 bg-yellow-500 bg-opacity-10 rounded">
 
-**Personlig tenker jeg på observabilitet som en måte å introdusere _litt determinisme i det udeterministiske_ — eller i det minste litt klarhet der ting ikke alltid er like tydelig.**
+**Vi bruker MLflow til å teste og iterere ettervhert som vi lærer mer om brukerne våre**
 
 </div>
 
@@ -586,12 +578,7 @@ Personlig tenker jeg på observabilitet som en måte å introdusere litt determi
 
 # MLflow UI — Traces-oversikten
 
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-8 text-yellow-400 text-center mt-8 h-80 flex flex-col items-center justify-center">
-  <div class="text-4xl mb-4">📊</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: MLflow UI — Traces-oversikten</div>
-  <div class="text-xs mt-2">En liste med traces, med kolonner for trace ID, status, latency, og tidspunkt</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/mlflow-traces-overview.png</code></div>
-</div>
+<img src="/screenshots/mlflow-traces-overview-blurred.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Traces-oversikten" />
 
 <!--
 Her ser dere MLflow UI — traces-oversikten.
@@ -688,7 +675,7 @@ graph LR
 
 <v-click>
 
-Takket være `mlflow.langchain.autolog()` kan vi i MLflow UI se **hvert steg** som en span i tracet.
+Med `mlflow.langchain.autolog()` kan vi i MLflow UI se **hvert steg** som en span i tracet.
 
 </v-click>
 
@@ -704,13 +691,7 @@ Takket være mlflow.langchain.autolog() kan vi i MLflow UI se hvert steg som en 
 
 # MLflow UI — Utvidet trace
 
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-8 text-yellow-400 text-center mt-8 h-80 flex flex-col items-center justify-center">
-  <div class="text-4xl mb-4">🔍</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: MLflow UI — Utvidet trace</div>
-  <div class="text-xs mt-2">Span-treet med validate_input → classify_intent → retrieve_context → generate_response</div>
-  <div class="text-xs mt-1">med input/output for hver span og latency-bar</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/mlflow-trace-expanded.png</code></div>
-</div>
+<img src="/screenshots/mlflow-trace-expanded-2.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Utvidet trace" />
 
 <!--
 Her ser dere et utvidet trace i MLflow UI — span-treet som viser:
@@ -812,13 +793,7 @@ Fordi Deep Agents bygger på LangChain, får vi automatisk tracing av hele orkes
 
 # MLflow UI — Ekstraheringsagent trace
 
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-8 text-yellow-400 text-center mt-8 h-80 flex flex-col items-center justify-center">
-  <div class="text-4xl mb-4">🌳</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: MLflow UI — Ekstraheringsagent trace</div>
-  <div class="text-xs mt-2">Dypt span-tre med orkestrator-agenten øverst, extraction-subagenten nøstet under,</div>
-  <div class="text-xs">og individuelle LLM-kall med tool calls synlige</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/mlflow-extraction-trace.png</code></div>
-</div>
+<img src="/screenshots/mlflow-extraction-trace-2.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Ekstraheringsagent trace" />
 
 <!--
 Her ser dere et ekstraheringsagent-trace i MLflow UI — det dype span-treet med orkestrator-agenten øverst, extraction-subagenten nøstet under, og individuelle LLM-kall med tool calls synlige.
@@ -962,13 +937,7 @@ Tredje kommando: Evaluer med 20% sampling fra siste uke.
 
 # MLflow UI — Evaluation results
 
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-8 text-yellow-400 text-center mt-8 h-80 flex flex-col items-center justify-center">
-  <div class="text-4xl mb-4">📈</div>
-  <div class="text-sm font-bold">📸 PLACEHOLDER: MLflow UI — Evaluation results</div>
-  <div class="text-xs mt-2">Tabell med aggregerte metrikker (pass rate, gjennomsnittsscore per scorer)</div>
-  <div class="text-xs">og rader med individuelle testtilfeller som viser score + rationale</div>
-  <div class="text-xs opacity-75 mt-1">Place as <code>/public/screenshots/mlflow-evaluation-results.png</code></div>
-</div>
+<img src="/screenshots/mlflow-evaluation-results-3.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Evaluation results" />
 
 <!--
 Resultatene havner i MLflow UI med:
@@ -1221,11 +1190,14 @@ Vi kan tweake systemet vårt, og skape en brukeropplevelse som brukerne faktisk 
 
 # Feedback-loopen
 
-<div class="border-2 border-dashed border-yellow-400 rounded-lg p-3 text-yellow-400 text-center mt-2 h-28 flex flex-col items-center justify-center">
-  <div class="text-2xl mb-1">👍👎</div>
-  <div class="text-xs font-bold">📸 PLACEHOLDER: Chat UI med feedback-knapper</div>
-  <div class="text-xs mt-1">Tommel opp/ned-knapper under et AI-svar</div>
-  <div class="text-xs opacity-75">→ <code>/public/screenshots/chat-feedback-ui.png</code></div>
+<div class="border rounded-lg p-3 bg-gray-50 mt-2 text-left max-w-lg mx-auto">
+  <div class="text-xs text-gray-500 mb-1">AI-assistent</div>
+  <div class="text-sm text-gray-800 blur-sm">Basert på tilstandsrapporten din anbefaler jeg at du sjekker dreneringen rundt grunnmuren, spesielt...</div>
+  <div class="flex gap-2 mt-2">
+    <button class="px-2 py-1 rounded border text-xs bg-white">👍</button>
+    <button class="px-2 py-1 rounded border text-xs bg-white">👎</button>
+    <span class="text-xs text-gray-400 ml-2 mt-1">Var dette svaret nyttig?</span>
+  </div>
 </div>
 
 <v-click>
