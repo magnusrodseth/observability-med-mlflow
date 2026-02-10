@@ -1,6 +1,6 @@
 # Forutsigbar agentisk oppførsel med LangChain og MLflow
 
-Presentation slides for the talk **"Forutsigbar agentisk oppførsel med LangChain og MLflow"** by Magnus Rødseth and Håvard Opheim (Capra Consulting), presented at Hei Huset.
+Presentation slides for the talk **"Forutsigbar agentisk oppførsel med LangChain og MLflow"** by Magnus Rødseth and Håvard Opheim (Capra Consulting).
 
 The talk covers how to build predictable AI agents using LangChain/LangGraph and achieve observability and evaluation with MLflow — including automatic tracing, custom scorers, and production trace evaluation.
 
