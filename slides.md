@@ -332,6 +332,13 @@ response = chain.invoke({"question": "Hva er hovedpunktene?"})
 ```
 ````
 
+<style>
+.slidev-code-magic-move .shiki-magic-move-container {
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+</style>
+
 <!--
 Det fine med LangChain er at terskelen er lav. I sin enkleste form:
 
@@ -993,47 +1000,11 @@ Og et eksempel på en OUT_OF_SCOPE_TEST_CASE — "Kan du hjelpe meg med matlagni
 Disse testtilfellene kan kjøres som regresjonstester — etter hver endring i prompts eller agentkode kan vi verifisere at kvaliteten holder seg.
 -->
 
----
-
-# Produksjons-traces → Evaluering
-
-<div class="text-sm">
-
-Det virkelig kraftige er at vi kan ta _ekte_ brukerinteraksjoner fra produksjon og evaluere dem:
-
-</div>
-
-```python {*|1-10|12-20}{lines:true}
-# api/src/evaluation/datasets/traces.py
-
-def query_mlflow_traces(experiment_name, trace_count, start_date):
-    """Hent traces fra MLflow for evaluering."""
-    client = mlflow.MlflowClient()
-    return client.search_traces(
-        experiment_ids=[experiment.experiment_id],
-        max_results=trace_count,
-        order_by=["timestamp_ms DESC"],
-    )
-
-def convert_traces_to_dataset(traces):
-    """Konverter MLflow-traces til evalueringsdatasett."""
-    dataset = []
-    for trace in traces:
-        dataset.append({
-            "inputs": {"question": question},
-            "outputs": {"answer": answer, "context": context, "intent": intent},
-        })
-    return dataset
-```
-
-<!--
-Det virkelig kraftige er at vi kan ta ekte brukerinteraksjoner fra produksjon og evaluere dem.
-
-Vi har en funksjon som henter traces fra MLflow for evaluering.
-Og en funksjon som konverterer MLflow-traces til evalueringsdatasett.
-
-Vi ekstraher spørsmål, svar, kontekst og intensjon fra tracens request/response data.
--->
+<style>
+.slidev-code-wrapper {
+  font-size: 0.52em !important;
+}
+</style>
 
 ---
 

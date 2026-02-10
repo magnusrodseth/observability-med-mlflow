@@ -1,11 +1,11 @@
 .slidev-code-wrapper {
-  font-size: 0.58em !important;
-  line-height: 1.35 !important;
+  font-size: 0.72em !important;
+  line-height: 1.4 !important;
 }
 
 pre.slidev-code {
-  font-size: 0.9em !important;
-  line-height: 1.35 !important;
+  font-size: 1em !important;
+  line-height: 1.4 !important;
 }
 
 /* Make slides containing mermaid diagrams use flex column layout
