@@ -944,7 +944,7 @@ Tredje kommando: Evaluer med 20% sampling fra siste uke.
 
 # MLflow UI — Evaluation results
 
-<img src="/screenshots/mlflow-evaluation-results-3.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Evaluation results" />
+<img src="/screenshots/mlflow-evaluation-results-4.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Evaluation results" />
 
 <!--
 Resultatene havner i MLflow UI med:
