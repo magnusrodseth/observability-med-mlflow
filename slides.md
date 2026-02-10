@@ -695,7 +695,7 @@ class AgentState(TypedDict, total=False):
 
 <div class="mt-4 p-4 bg-blue-500 bg-opacity-10 rounded">
 
-Alt dette er synlig i hvert trace — vi kan se nøyaktig hva grafen "tenkte" i hvert steg.
+Alt dette er synlig i hvert trace og vi kan se nøyaktig hva grafen "tenkte" i hvert steg.
 
 </div>
 
@@ -715,7 +715,7 @@ Alt dette er synlig i hvert trace — vi kan se nøyaktig hva grafen "tenkte" i 
 
 <div class="text-sm">
 
-For dokumentanalyse bruker vi **Deep Agents** — et abstraksjonslag over LangChain og LangGraph.
+For dokumentanalyse bruker vi **Deep Agents** som abstraksjonslag over LangChain og LangGraph.
 
 </div>
 
@@ -796,7 +796,7 @@ Vi har bygget fire tilpassede scorers med **MLflow GenAI Evaluation**:
 <div class="border rounded p-3">
   <div class="text-xl mb-1">🇳🇴</div>
   <div class="font-bold text-sm">NorwegianLanguageScorer</div>
-  <div class="text-xs opacity-75">Svarer agenten på norsk? (Viktig for oss!)</div>
+  <div class="text-xs opacity-75">Svarer agenten på norsk?</div>
 </div>
 
 </div>
