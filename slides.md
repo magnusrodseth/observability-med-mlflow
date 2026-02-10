@@ -1298,3 +1298,4 @@ Capra Consulting @ Gjensidige
 <!--
 Takk for oppmerksomheten! Spørsmål?
 -->
+
