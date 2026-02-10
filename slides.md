@@ -29,9 +29,11 @@ background: /banner.jpeg
 </div>
 
 <!--
-Velkommen! Vi er Magnus og Håvard fra Capra Consulting.
+Håvard: 
+
+Velkommen! Vi er Magnus og Håvard fra Capra.
 I dag skal vi vise hvordan vi bruker LangChain og MLflow for å bygge forutsigbare AI-agenter hos Gjensidige.
-Presentasjonen varer 20 minutter.
+
 -->
 
 ---
@@ -60,9 +62,7 @@ Presentasjonen varer 20 minutter.
 
 <div class="mt-12 text-center text-lg">
 
-Jobber hos **Gjensidige** — Norges største forsikringsselskap
-
-Bygger agentiske AI-applikasjoner
+Utiled hos **Gjensidige**, hvor vi (blant annet) bygger agentiske AI-applikasjoner
 
 </div>
 
@@ -72,8 +72,7 @@ Bygger agentiske AI-applikasjoner
 </div>
 
 <!--
-Hei alle sammen. Vi heter Magnus Rødseth og Håvard Opheim, og vi er utviklere i Capra Consulting.
-Vi jobber for tiden på et nytt prosjekt hos Gjensidige — Norges største forsikringsselskap.
+Håvard fortsetter
 -->
 
 ---
@@ -96,11 +95,13 @@ Vi viser hvordan vi bruker **MLflow** og **LangChain** for å observere og guide
 </div>
 
 <!--
+Håvard: 
 Temaet for denne presentasjonen er: Forutsigbar agentisk oppførsel med LangChain og MLflow.
 Agentiske applikasjoner og store språkmodeller kan ofte oppleves som uforutsigbare og vanskelig å forholde seg til som utviklere.
 Vi skal vise dere hvordan vi bruker MLflow og LangChain hos Gjensidige for å observere og guide adferden i agentiske applikasjoner.
 
-Men først — en rask introduksjon til verktøyene vi bruker, for de som ikke har jobbet med dette før.
+Magnus:
+Men først — en rask introduksjon til verktøyene vi bruker, for de som ikke har utvikleet agentiske applikasjoner.
 -->
 
 ---
@@ -111,7 +112,7 @@ class: text-center
 ## Lynkurs: LangChain, agenter og samtaledesign
 
 <!--
-Før vi dykker inn i produktet, la oss sørge for at alle er på samme side.
+Magnus
 -->
 
 ---
@@ -179,12 +180,7 @@ _Men hva er egentlig en agent?_
 </v-click>
 
 <!--
-LangChain er et Python-bibliotek som gjør det enklere å bygge applikasjoner med store språkmodeller.
-I stedet for å skrive rå API-kall mot OpenAI, gir LangChain deg byggeblokker: prompt-maler, modellabstraksjoner, verktøy og minnehåndtering.
-Tenk på det som et rammeverk som lar deg sette sammen LLM-baserte pipelines uten å finne opp hjulet hver gang.
-
-LangGraph er et søsterbibliotek som lar deg bygge agenter — altså LLM-applikasjoner som kan ta flere steg, bruke verktøy, og ta avgjørelser underveis.
-Du definerer flyten som en graf med noder og kanter, og LangGraph håndterer tilstand, feilhåndtering og parallellitet.
+Magnus
 -->
 
 ---
@@ -237,15 +233,7 @@ Modell → Svar
 </v-click>
 
 <!--
-En vanlig LLM-integrasjon er: bruker sender spørsmål → modell svarer. Én runde.
-
-En agent er annerledes — den kan:
-- Resonnere over spørsmålet og planlegge neste steg
-- Bruke verktøy — hente data fra en database, søke i dokumenter, kalle API-er
-- Iterere — sjekke svaret sitt, og prøve på nytt hvis det ikke er godt nok
-- Delegere — sende deloppgaver til andre agenter
-
-I praksis betyr det at du gir en LLM tilgang til verktøy og lar den selv bestemme om og når den skal bruke dem.
+Magnus
 -->
 
 ---
@@ -281,13 +269,8 @@ Vi definerer hva agenten _ikke_ skal svare på. Holdningen er: **"Gjør én ting
 </v-clicks>
 
 <!--
-Når du designer samtaler for agenter, er det tre nøkkelprinsipper:
-
-1. Intensjonsklassifisering — Hva prøver brukeren å oppnå? Vi klassifiserer hvert spørsmål for å velge riktig behandling.
-
-2. Kontekstinjeksjon — Vi henter relevant informasjon fra dokumenter og databaser og gir det til modellen før den svarer.
-
-3. Guardrails — Vi definerer hva agenten ikke skal svare på. Holdningen er: "Gjør én ting, gjør den bra."
+Håvard tar over. 
+Nevn også at samtaler har en tre-struktur med noder og kanter hvor forskjellige verktøy og kontekst kan tilgjengeliggjøres i forskjellige noder
 -->
 
 ---
@@ -340,14 +323,7 @@ response = chain.invoke({"question": "Hva er hovedpunktene?"})
 </style>
 
 <!--
-Det fine med LangChain er at terskelen er lav. I sin enkleste form:
-
-1. Lag en modell — her bruker vi Azure OpenAI
-2. Lag en prompt — en mal med system-melding og bruker-spørsmål
-3. Koble sammen og kjør — bruk pipe-operatoren til å lage en chain
-
-Tre linjer, og du har en fungerende LLM-pipeline.
-Derfra bygger du på med verktøy, agentlogikk, RAG, og — som vi skal se — observabilitet.
+Håvard fortsetter: LangChain + en språkmodell enkelt å sette opp. Her er vårt oppsett med Azure Open AI og LangChain i Python. 
 -->
 
 ---
@@ -428,7 +404,7 @@ class: text-center
 ## Hva bygger vi?
 
 <!--
-Nå som dere har en grunnleggende forståelse av LangChain og agenter, la oss se på hva vi faktisk bygger.
+Magnus intrduserer hva vi bygger
 -->
 
 ---
@@ -461,13 +437,7 @@ Tenk deg at du bygger en chatbot der brukere kan:
 </div>
 
 <!--
-La oss ta et konkret case: En agentisk dokumentassistent.
-
-Tenk deg at du bygger en chatbot der brukere kan laste opp komplekse dokumenter — rapporter, kontrakter, manualer — og så stille spørsmål og få svar basert på innholdet.
-
-Utfordringen er: Hvordan vet du at agenten fungerer? At den ikke hallusinerer? At RAG henter riktig kontekst?
-
-Dette er nøyaktig problemstillingen vi skal vise dere hvordan vi løser med MLflow.
+Magnus.. 
 -->
 
 ---
@@ -508,13 +478,7 @@ graph LR
 </v-click>
 
 <!--
-Her er den tekniske arkitekturen på høyt nivå.
-
-Vi har en React Router frontend.
-FastAPI backend med guardrails for validering, RAG med pgvector, og conversation memory i PostgreSQL.
-Infrastrukturen består av PostgreSQL med pgvector, Azure OpenAI, og MLflow for observabilitet.
-
-Tech-stacken er: Python, LangGraph + LangChain for agentorkestrering, Azure OpenAI, PostgreSQL med pgvector, og — det vi skal fokusere på i dag — MLflow for observabilitet.
+Magnus
 -->
 
 ---
@@ -525,8 +489,7 @@ class: text-center
 ## Observabilitet og sporbarhet
 
 <!--
-Nå som dere forstår hva vi bygger, la oss snakke om hvorfor og hvordan vi legger til observabilitet.
-Dette er kjernen av presentasjonen.
+Håvard: også over på hvordan vi følger med på adferden til agenten ut mot brukerne. Dette er en ganske kritisk del av innsikten vi samler for å vite om produktet skaper verdi eller ikke.
 -->
 
 ---
@@ -572,13 +535,11 @@ Vi _må_ vite:
 </v-click>
 
 <!--
-Vi bygger en MLS — en "minimum lovable service" for pilotbrukerne våre. Det betyr at vi må vite:
+Spørsmål vi stiller oss:
 
 1. Hvordan bruker folk AI-delene? Stiller de spørsmål vi ikke forventet? Treffer RAG-modulen riktig kontekst?
 2. Hvordan oppfører agentene seg? Klassifiserer de intensjon riktig? Hallusinerer de?
 3. Fungerer ekstraheringen? Finner AI-en alle relevante funn i dokumentene?
-
-Personlig tenker jeg på observabilitet som en måte å introdusere litt determinisme i det udeterministiske — eller i det minste litt klarhet der ting ikke alltid er like tydelig.
 -->
 
 ---
@@ -588,15 +549,14 @@ Personlig tenker jeg på observabilitet som en måte å introdusere litt determi
 <img src="/screenshots/mlflow-traces-overview-blurred.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Traces-oversikten" />
 
 <!--
-Her ser dere MLflow UI — traces-oversikten.
-Dette er en liste med alle traces, med kolonner for trace ID, status, latency, og tidspunkt.
+Hvis du spinner opp en docker image med MLflow så får du noe sånt som dette ut av boksen. Men du må confige bittelitt for å få data inn, men ikke så mye.
 -->
 
 ---
 
 # Slik setter vi opp MLflow-tracing
 
-Alt begynner med én funksjon: `init_mlflow()`
+`init_mlflow()`:
 
 ````md magic-move
 ```python
@@ -790,10 +750,7 @@ Fordi Deep Agents bygger på LangChain, får vi **automatisk tracing av hele ork
 </v-click>
 
 <!--
-For dokumentanalyse bruker vi Deep Agents-biblioteket — et bibliotek for å bygge agenter med planlegging, subagenter og verktøy, bygget av LangChain-teamet.
-Tenk på det som et abstraksjonslag over LangChain og LangGraph for å få kjernen av Claude Code out-of-the-box uten å måtte skrive all kode selv.
-
-Fordi Deep Agents bygger på LangChain, får vi automatisk tracing av hele orkestreringsagenten og alle subagent-kall via den samme autolog()-linjen.
+Magnus hopper inn igjen
 -->
 
 ---
@@ -803,13 +760,7 @@ Fordi Deep Agents bygger på LangChain, får vi automatisk tracing av hele orkes
 <img src="/screenshots/mlflow-extraction-trace-3.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Ekstraheringsagent trace" />
 
 <!--
-Her ser dere et ekstraheringsagent-trace i MLflow UI — det dype span-treet med orkestrator-agenten øverst, extraction-subagenten nøstet under, og individuelle LLM-kall med tool calls synlige.
-
-I MLflow UI kan vi se:
-- Hovedagentens resonnering og verktøykall
-- Subagentens ekstraheringsresultater
-- Hvert LLM-kall med full prompt og respons
-- Tidsbruk per fase
+Magnus fortsetter
 -->
 
 ---
@@ -853,17 +804,7 @@ Vi har bygget fire tilpassede scorers med **MLflow GenAI Evaluation**:
 </v-clicks>
 
 <!--
-Tracing gir oss innsikt i hva som skjer.
-Men vi trenger også å måle hvor bra det fungerer.
-
-Her bruker vi MLflow GenAI Evaluation.
-
-Vi har bygget fire tilpassede scorers:
-
-1. GroundednessScorer — Er svaret forankret i konteksten? Fanger opp hallusinasjoner.
-2. HelpfulnessScorer — Adresserer svaret brukerens spørsmål? En høflig avvisning av off-topic-spørsmål regnes som "helpful".
-3. RetrievalRelevanceScorer — Er den hentede konteksten relevant for spørsmålet?
-4. NorwegianLanguageScorer — Svarer agenten på norsk? Viktig for oss!
+Magnus
 -->
 
 ---
@@ -891,14 +832,6 @@ def GroundednessScorer():
 
 <!--
 Her er koden for GroundednessScorer.
-
-Vi bruker @scorer-dekoratøren fra MLflow.
-Først hopper vi over evaluering for REJECTED og GENERAL_CHAT-intensjoner — det gir ikke mening å evaluere forankring for "Hei, hvordan har du det?".
-Så kaller vi en strukturert output-dommer som vurderer om svaret er forankret i konteksten.
-Vi mapper resultatet til en score: 1.0 for fully grounded, 0.5 for partially grounded, 0.0 for hallucinated.
-Og vi returnerer Feedback med score og rationale.
-
-Legg merke til at scorerne er intensjonsbevisste. Hvis intensjonen er GENERAL_CHAT, hopper vi over groundedness-evalueringen.
 -->
 
 ---
@@ -933,11 +866,7 @@ uv run --directory api python -m src.evaluation.cli conversation \
 </v-click>
 
 <!--
-Vi har en CLI for å kjøre evalueringer.
-
-Første kommando: Evaluer mot utvalgt testdatasett med 17 testtilfeller.
-Andre kommando: Evaluer de siste 100 produksjons-tracene.
-Tredje kommando: Evaluer med 20% sampling fra siste uke.
+Magnus...
 -->
 
 ---
@@ -992,12 +921,7 @@ Disse testtilfellene kan kjøres som **regresjonstester** — etter hver endring
 </v-click>
 
 <!--
-Vi har definert testtilfeller som dekker ulike scenarioer.
-
-Her er et eksempel på en DOCUMENT_TEST_CASE — "Hva er hovedfunnene i rapporten?" med forventet intensjon og referansesvar.
-Og et eksempel på en OUT_OF_SCOPE_TEST_CASE — "Kan du hjelpe meg med matlagning?" som skal avvises.
-
-Disse testtilfellene kan kjøres som regresjonstester — etter hver endring i prompts eller agentkode kan vi verifisere at kvaliteten holder seg.
+Magnus
 -->
 
 <style>
@@ -1019,9 +943,7 @@ graph LR
 ```
 
 <!--
-Flyten er: Produksjon → MLflow traces → Filtrer/sample → Evalueringsdatasett → Scorers → Resultater tilbake i MLflow UI.
-
-Dette gir oss muligheten til å kontinuerlig evaluere kvaliteten på produksjons-interaksjoner.
+Magnus:
 -->
 
 ---
@@ -1032,7 +954,7 @@ class: text-center
 ## Utvikling og hosting
 
 <!--
-La oss se på hvordan vi kjører dette lokalt og i produksjon.
+Håvard tar resten
 -->
 
 ---
