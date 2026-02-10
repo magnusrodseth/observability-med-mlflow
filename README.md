@@ -1,11 +1,16 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# Forutsigbar agentisk oppførsel med LangChain og MLflow
 
-To start the slide show:
+Presentation slides for the talk **"Forutsigbar agentisk oppførsel med LangChain og MLflow"** by Magnus Rødseth and Håvard Opheim (Capra Consulting), presented at Hei Huset.
 
-- `pnpm install`
-- `pnpm dev`
-- visit <http://localhost:3030>
+The talk covers how to build predictable AI agents using LangChain/LangGraph and achieve observability and evaluation with MLflow — including automatic tracing, custom scorers, and production trace evaluation.
 
-Edit the [slides.md](./slides.md) to see the changes.
+Built with [Slidev](https://sli.dev/).
 
-Learn more about Slidev at the [documentation](https://sli.dev/).
+## Getting started
+
+```sh
+pnpm install
+pnpm dev
+```
+
+Then visit <http://localhost:3030>.
