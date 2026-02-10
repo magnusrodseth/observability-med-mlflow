@@ -151,7 +151,7 @@ Magnus
 
 <div class="mt-8">
 
-**LangChain** er et Python-bibliotek som gjør det enklere å bygge applikasjoner med store språkmodeller.
+**LangChain** er et bibliotek som gjør det enklere å bygge applikasjoner med store språkmodeller.
 
 I stedet for å skrive rå API-kall mot OpenAI, gir LangChain deg byggeblokker: prompt-maler, modellabstraksjoner, verktøy og minnehåndtering.
 
@@ -963,7 +963,7 @@ Håvard tar resten
 
 <div class="text-sm">
 
-For lokal utvikling er MLflow del av vår Docker Compose:
+Med Docker Compose
 
 </div>
 
@@ -1017,7 +1017,7 @@ For produksjon kan MLflow hostes på flere måter.
 **Alternativer for produksjonsskala (fra MLflows dokumentasjon):**
 - AWS SageMaker
 - Azure Machine Learning
-- Nebius
+- Nebius (🇪🇺)
 - GCP (GKE)
 
 </div>
