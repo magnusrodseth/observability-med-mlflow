@@ -800,7 +800,7 @@ Fordi Deep Agents bygger på LangChain, får vi automatisk tracing av hele orkes
 
 # MLflow UI — Ekstraheringsagent trace
 
-<img src="/screenshots/mlflow-extraction-trace-2.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Ekstraheringsagent trace" />
+<img src="/screenshots/mlflow-extraction-trace-3.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Ekstraheringsagent trace" />
 
 <!--
 Her ser dere et ekstraheringsagent-trace i MLflow UI — det dype span-treet med orkestrator-agenten øverst, extraction-subagenten nøstet under, og individuelle LLM-kall med tool calls synlige.
@@ -944,7 +944,7 @@ Tredje kommando: Evaluer med 20% sampling fra siste uke.
 
 # MLflow UI — Evaluation results
 
-<img src="/screenshots/mlflow-evaluation-results-4.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Evaluation results" />
+<img src="/screenshots/mlflow-evaluation-results-3.png" class="rounded-lg shadow-lg mt-4 mx-auto h-96" alt="MLflow UI — Evaluation results" />
 
 <!--
 Resultatene havner i MLflow UI med:
